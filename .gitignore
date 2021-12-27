@@ -4,4 +4,4 @@ __pycache__/
 build/
 electrickiwi.spec
 ek_creds.txt
-.github/
+__init__.py
