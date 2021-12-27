@@ -24,17 +24,18 @@ if not loaded and input('Save credentials? Y/N : ').lower() in ('y', 'yes'):
         f.write(email+'\n'+password)
 
 connection = ek.connection_details()
+#print(connection)
 
 include_discount = True
 plans = {
-    'loyal_kiwi': {
-        'kwh_incl': 0.2852,
-        'daily_incl': 0.83,
-    },
-    # 'loyal_kiwi_low': {
-    #     'kwh_incl': 0.3072,
-    #     'daily_incl': 0.3400,
-    # },
+    #'loyal_kiwi': {
+    #    'kwh_incl': 0.2852,
+    #    'daily_incl': 0.83,
+    #},
+     'loyal_kiwi_low': {
+         'kwh_incl': 0.3543,
+         'daily_incl': 0.3400,
+     },
     # 'kiwi': {
     #     'kwh_incl': 0.2963,
     #     'daily_incl': 0.8300,
@@ -43,28 +44,27 @@ plans = {
     #     'kwh_incl': 0.3183,
     #     'daily_incl': 0.3400,
     # },
-    'stay_ahead': {
-        'kwh_incl': 0.2362,
-        'daily_incl': 1.35,
-        'discount_percent': 11.5,
-    },
-    # 'stay_ahead_low': {
-    #     'kwh_incl': 0.3204,
-    #     'daily_incl': 0.3700,
-    #     'discount_percent': 11.5,
-    # },
-    'move_master': {
-        'kwh_incl': [['0700','0900',0.3959],['0900','1700',0.2613],['1700','2100',0.3959],['2100','2300',0.2613],['2300','0700',0.1980]],
-        'daily_incl': 0.8300,
-    },
-    # 'move_master_low': {
-    #     'kwh_incl': [['0700','0900',0.4265],['0900','1700',0.2814],['1700','2100',0.4265],['2100','2300',0.2814],['2300','0700',0.2132]],
-    #     'daily_incl': 0.3400,
-    # },
+    #'stay_ahead': {
+    #    'kwh_incl': 0.2362,
+    #    'daily_incl': 1.35,
+    #    'discount_percent': 11.5,
+    #},
+     'stay_ahead_low': {
+         'kwh_incl': 0.3389,
+         'daily_incl': 0.3700,
+         'discount_percent': 11.5,
+     },
+    #'move_master': {
+    #    'kwh_incl': [['0700','0900',0.3959],['0900','1700',0.2613],['1700','2100',0.3959],['2100','2300',0.2613],['2300','0700',0.1980]],
+    #    'daily_incl': 0.8300,
+    #},
+     'move_master_low': {
+         'kwh_incl': [['0700','0900',0.3558],['0900','1700',0.2286],['1700','2100',0.3558],['2100','2300',0.2286],['2300','0700',0.1779]],
+         'daily_incl': 0.3400,
+     },
 }
 
 consumption = ek.consumption(arrow.now().shift(days=-2).shift(months=-12), arrow.now())
-
 days = []
 for date in consumption:
     data = consumption[date]
